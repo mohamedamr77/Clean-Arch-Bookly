@@ -1,38 +1,47 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sale_info_model.dart';
+part of 'book_entity.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SaleInfoAdapter extends TypeAdapter<SaleInfo> {
+class BookEntityAdapter extends TypeAdapter<BookEntity> {
   @override
-  final int typeId = 2;
+  final int typeId = 1;
 
   @override
-  SaleInfo read(BinaryReader reader) {
+  BookEntity read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return SaleInfo(
-      country: fields[0] as String?,
-      saleability: fields[1] as String?,
-      isEbook: fields[2] as bool?,
+    return BookEntity(
+      bookId: fields[1] as String,
+      image: fields[0] as String?,
+      title: fields[2] as String,
+      authorName: fields[3] as String?,
+      price: fields[4] as num?,
+      rate: fields[5] as num?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, SaleInfo obj) {
+  void write(BinaryWriter writer, BookEntity obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(6)
       ..writeByte(0)
-      ..write(obj.country)
+      ..write(obj.image)
       ..writeByte(1)
-      ..write(obj.saleability)
+      ..write(obj.bookId)
       ..writeByte(2)
-      ..write(obj.isEbook);
+      ..write(obj.title)
+      ..writeByte(3)
+      ..write(obj.authorName)
+      ..writeByte(4)
+      ..write(obj.price)
+      ..writeByte(5)
+      ..write(obj.rate);
   }
 
   @override
@@ -41,7 +50,7 @@ class SaleInfoAdapter extends TypeAdapter<SaleInfo> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SaleInfoAdapter &&
+      other is BookEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
