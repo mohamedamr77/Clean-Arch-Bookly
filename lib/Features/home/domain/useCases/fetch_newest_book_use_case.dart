@@ -2,6 +2,7 @@ import 'package:cleanarchcleanarchbookly/Features/home/domain/repos/home_repo.da
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failure.dart';
+import '../../../../core/use_case/use_case.dart';
 import '../entities/book_entity.dart';
 
 class FetchNewestBooksUseCase extends UseCase<List<BookEntity>,NoParameter>{
@@ -13,10 +14,3 @@ class FetchNewestBooksUseCase extends UseCase<List<BookEntity>,NoParameter>{
     return  await homeRepo.fetchNewestBook();
   }
 }
-
-abstract class UseCase<Type,Param> {
-  Future<Either<Type,Failure>> call([Param param]);
-
-}
-
-class NoParameter{}
