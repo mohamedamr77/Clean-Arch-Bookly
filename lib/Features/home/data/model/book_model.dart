@@ -1,6 +1,7 @@
 
 import 'package:cleanarchcleanarchbookly/Features/home/data/model/sale_info/sale_info_model.dart';
 import 'package:cleanarchcleanarchbookly/Features/home/data/model/volume_info/volume_info_model.dart';
+import 'package:cleanarchcleanarchbookly/Features/home/domain/entities/book_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'access_info/access_info_model.dart';
 
@@ -8,7 +9,7 @@ import 'package:hive/hive.dart';
 part 'book_model.g.dart';
 
 @HiveType(typeId: 0)
-class BookModel extends Equatable {
+class BookModel extends BookEntity with EquatableMixin {
   @HiveField(0)
   final String? kind;
   @HiveField(1)
@@ -35,7 +36,7 @@ class BookModel extends Equatable {
     this.saleInfo,
     this.accessInfo,
     this.saveBook = false,
-  });
+  }) : super(bookId: id!,image: volumeInfo!.imageLinks?.thumbnail  ??"", title: volumeInfo!.title ??"Mohamed " , authorName: volumeInfo.authors!.first?? "Mohamed", price: 0, rate: volumeInfo.averageRating);
 
   // Factory constructor to create a Book object from JSON
   factory BookModel.fromJson(Map<String, dynamic> json) {
