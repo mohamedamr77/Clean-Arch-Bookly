@@ -36,7 +36,15 @@ class BookModel extends BookEntity with EquatableMixin {
     this.saleInfo,
     this.accessInfo,
     this.saveBook = false,
-  }) : super(bookId: id!,image: volumeInfo!.imageLinks?.thumbnail  ??"", title: volumeInfo!.title ??"Mohamed " , authorName: volumeInfo.authors!.first?? "Mohamed", price: 0, rate: volumeInfo.averageRating);
+  }) : super(
+      bookId: id!,
+      image: volumeInfo!.imageLinks?.thumbnail  ??"",
+      title: volumeInfo.title ??"Mohamed " ,
+      authorName:
+      volumeInfo.authors?.first?? "Mohamed",
+      price: 0,
+      rate: volumeInfo.averageRating
+  );
 
   // Factory constructor to create a Book object from JSON
   factory BookModel.fromJson(Map<String, dynamic> json) {
