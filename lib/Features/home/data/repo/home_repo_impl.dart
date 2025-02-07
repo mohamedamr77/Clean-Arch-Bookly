@@ -4,6 +4,7 @@ import 'package:cleanarchcleanarchbookly/Features/home/domain/entities/book_enti
 import 'package:cleanarchcleanarchbookly/Features/home/domain/repos/home_repo.dart';
 import 'package:cleanarchcleanarchbookly/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
@@ -23,7 +24,10 @@ class HomeRepoImpl implements HomeRepo {
       books = await homeRemoteDataSource.fetchFeatureBooks();
       return right(books);
     } catch (e) {
-      return left(ServerFailure(message: e.toString()));
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      }
+      return left(ServerFailure(errorMessage: e.toString()));
     }
   }
 
@@ -38,7 +42,10 @@ class HomeRepoImpl implements HomeRepo {
        books = await homeRemoteDataSource.fetchNewestBook();
       return right(books);
     } catch (e) {
-      return left(ServerFailure(message: e.toString()));
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      }
+      return left(ServerFailure(errorMessage: e.toString()));
     }
   }
 }
