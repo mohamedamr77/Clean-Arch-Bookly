@@ -1,5 +1,7 @@
 import 'package:cleanarchcleanarchbookly/Features/home/data/repo/home_repo_impl.dart';
 import 'package:cleanarchcleanarchbookly/Features/home/domain/entities/book_entity.dart';
+import 'package:cleanarchcleanarchbookly/Features/home/domain/useCases/fetch_newest_book_use_case.dart';
+import 'package:cleanarchcleanarchbookly/Features/home/presentation/view_model/newest_books/newest_books_cubit.dart';
 import 'package:cleanarchcleanarchbookly/core/utils/setup_service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,11 +34,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => FeatureBooksCubit(FetchFeatureBooksUseCase(
-           getIt.get<HomeRepoImpl>()
-      )
-      )..fetchFeatureBooks(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<FeatureBooksCubit>(
+          create: (context) =>FeatureBooksCubit(FetchFeatureBooksUseCase(
+              getIt.get<HomeRepoImpl>()
+          )
+          )..fetchFeatureBooks(),
+        ),
+
+        BlocProvider<NewestBooksCubit>(
+          create: (context) => NewestBooksCubit(FetchNewestBooksUseCase(getIt.get<HomeRepoImpl>()))..getNewestBooks(),
+        ),
+      ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
