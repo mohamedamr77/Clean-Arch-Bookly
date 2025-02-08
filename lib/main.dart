@@ -19,6 +19,8 @@ void main() async {
 
   await Hive.openBox<BookEntity>(BoxApp.kFeaturedBookBox);
   await Hive.openBox<BookEntity>(BoxApp.kNewestBookBox);
+  await Hive.box<BookEntity>(BoxApp.kFeaturedBookBox).clear();
+  await Hive.box<BookEntity>(BoxApp.kNewestBookBox).clear();
   serviceLocator();
 
   Bloc.observer = SimpleBlocObserver();

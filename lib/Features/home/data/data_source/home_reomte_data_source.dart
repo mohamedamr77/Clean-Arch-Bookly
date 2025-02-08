@@ -16,7 +16,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource{
   HomeRemoteDataSourceImpl({required this.apiService});
   @override
   Future<List<BookEntity>> fetchFeatureBooks() async{
-  return await getBooks(endPoint: "volumes?q=Science&Filtering =free", nameBox: BoxApp.kFeaturedBookBox);
+  return await getBooks(endPoint: "volumes?q=AI&Filtering =free", nameBox: BoxApp.kFeaturedBookBox);
   }
 
   @override
