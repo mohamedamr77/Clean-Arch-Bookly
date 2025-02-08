@@ -1,6 +1,4 @@
 import 'package:cleanarchcleanarchbookly/Features/home/domain/entities/book_entity.dart';
-import 'package:cleanarchcleanarchbookly/Features/home/presentation/view_model/feature_books/feature_books_cubit.dart';
-import 'package:cleanarchcleanarchbookly/Features/home/presentation/view_model/feature_books/feature_books_state.dart';
 import 'package:cleanarchcleanarchbookly/Features/home/presentation/view_model/newest_books/newest_books_cubit.dart';
 import 'package:cleanarchcleanarchbookly/Features/home/presentation/view_model/newest_books/newest_books_state.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +7,6 @@ import '../../../../../core/utils/styles.dart';
 import 'best_seller_list_view.dart';
 import 'custom_app_bar.dart';
 import 'featured_book_bloc_builder.dart';
-import 'featured_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});

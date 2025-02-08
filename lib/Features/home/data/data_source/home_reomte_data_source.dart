@@ -1,6 +1,5 @@
 import 'package:cleanarchcleanarchbookly/core/helper/api_service.dart';
 import 'package:cleanarchcleanarchbookly/core/utils/app_box.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../core/functions/save_books.dart';
 import '../../domain/entities/book_entity.dart';

@@ -1,8 +1,5 @@
 import 'package:cleanarchcleanarchbookly/Features/home/domain/entities/book_entity.dart';
-import 'package:cleanarchcleanarchbookly/Features/home/presentation/view_model/feature_books/feature_books_cubit.dart';
-import 'package:cleanarchcleanarchbookly/Features/home/presentation/view_model/feature_books/feature_books_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'custom_book_item.dart';
 
