@@ -10,6 +10,7 @@ import 'Features/home/presentation/view_model/feature_books/feature_books_cubit.
 import 'constants.dart';
 import 'core/utils/app_box.dart';
 import 'core/utils/app_router.dart';
+import 'core/utils/simple_bloc_observer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ void main() async {
 
   await Hive.openBox<BookEntity>(BoxApp.kFeaturedBookBox);
   await Hive.openBox<BookEntity>(BoxApp.kNewestBookBox);
+  Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }
 
