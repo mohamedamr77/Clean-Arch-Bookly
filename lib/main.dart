@@ -19,6 +19,8 @@ void main() async {
 
   await Hive.openBox<BookEntity>(BoxApp.kFeaturedBookBox);
   await Hive.openBox<BookEntity>(BoxApp.kNewestBookBox);
+  serviceLocator();
+
   Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
       create: (context) => FeatureBooksCubit(FetchFeatureBooksUseCase(
            getIt.get<HomeRepoImpl>()
       )
-      ),
+      )..fetchFeatureBooks(),
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
