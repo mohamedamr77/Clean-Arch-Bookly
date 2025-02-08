@@ -1,9 +1,6 @@
-import 'package:cleanarchcleanarchbookly/Features/home/data/data_source/home_local_data_source.dart';
-import 'package:cleanarchcleanarchbookly/Features/home/data/data_source/home_reomte_data_source.dart';
 import 'package:cleanarchcleanarchbookly/Features/home/data/repo/home_repo_impl.dart';
 import 'package:cleanarchcleanarchbookly/Features/home/domain/entities/book_entity.dart';
-import 'package:cleanarchcleanarchbookly/Features/home/domain/repos/home_repo.dart';
-import 'package:cleanarchcleanarchbookly/core/helper/api_service.dart';
+import 'package:cleanarchcleanarchbookly/core/utils/setup_service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,10 +28,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => FeatureBooksCubit(FetchFeatureBooksUseCase(
-          HomeRepoImpl(
-              homeRemoteDataSource:
-                  HomeRemoteDataSourceImpl(apiService: ApiService()),
-              homeLocalDataSource: HomeLocalDataSourceImpl()))),
+           getIt.get<HomeRepoImpl>()
+      )
+      ),
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
